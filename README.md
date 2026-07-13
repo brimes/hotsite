@@ -2,9 +2,20 @@
 
 Hotsite pessoal de **Bruno de Lima** — Head of AI Transformation.
 
-Site estático de página única (portfólio + carreira), bilíngue **PT/EN**, sem build e auto-contido em um único `index.html`.
+Site estático, sem build, que **se adapta à faixa etária** de quem entra. A página inicial (`index.html`) pergunta a idade e direciona para uma de cinco experiências distintas.
 
-🔗 **brimes.net**
+🔗 **www.brimes.net**
+
+## Páginas
+
+| Faixa | Arquivo | Estilo |
+|---|---|---|
+| entrada | `index.html` | Porta que pergunta a faixa etária |
+| 0–12 | `kids.html` | Infantil e colorido — brincadeiras fora das telas |
+| 12–18 | `teen.html` | Jovem — carreira e a história do Bruno aos 14/16/17 |
+| 18–35 | `pro.html` | Portfólio profissional (bilíngue PT/EN) + foto |
+| 35–60 | `retro.html` | Mesmas infos em visual retrô anos 80/90 |
+| 60+ | `jornal.html` | Preto e branco, estilo jornal antigo |
 
 ## Stack
 
