@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gazeta Brimes — Edição Especial</title>
+  <meta name="description" content="Gazeta Brimes: a trajetória de Bruno de Lima em formato de jornal. Notícias da carreira de um líder de tecnologia." />
+  <meta name="theme-color" content="#f4f1e8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23f4f1e8'/><text x='50' y='72' font-size='58' text-anchor='middle'>📰</text></svg>" />
+  <style>
+    :root {
+      --paper: #f4f1e8; --ink: #1a1a1a; --ink-soft: #333; --line: #1a1a1a; --muted: #555;
+      --serif: 'Old Standard TT', 'Times New Roman', serif; --display: 'Playfair Display', Georgia, serif; --black: 'UnifrakturCook', 'Playfair Display', serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--paper); color: var(--ink); font-family: var(--serif); line-height: 1.5; font-size: 18px;
+      /* newsprint texture */
+      background-image: radial-gradient(rgba(0,0,0,.025) 1px, transparent 1px); background-size: 4px 4px;
+      filter: none;
+    }
+    body::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 5; box-shadow: inset 0 0 140px rgba(120,110,90,.28); }
+    a { color: var(--ink); }
+    .paper { max-width: 1000px; margin: 0 auto; padding: 18px 26px 50px; position: relative; }
+
+    .toprule { display: flex; justify-content: space-between; align-items: center; font-size: 13px; letter-spacing: .06em; text-transform: uppercase;
+      border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+    .toprule a { text-decoration: none; border: 1px solid var(--line); padding: 3px 10px; }
+    .toprule a:hover { background: var(--ink); color: var(--paper); }
+
+    .masthead { text-align: center; padding: 12px 0 6px; border-bottom: 3px double var(--line); }
+    .masthead h1 { font-family: var(--black); font-size: clamp(3rem, 9vw, 6rem); font-weight: 700; line-height: .95; letter-spacing: 1px; }
+    .masthead .motto { font-style: italic; font-size: 16px; color: var(--muted); margin-top: 2px; }
+    .dateline { display: flex; justify-content: space-between; align-items: center; font-size: 13px; text-transform: uppercase;
+      letter-spacing: .05em; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 5px 0; margin-top: 8px; }
+    .dateline .c { flex: 1; text-align: center; } .dateline .l { text-align: left; } .dateline .r { text-align: right; }
+
+    .lead-head { text-align: center; padding: 20px 0 6px; }
+    .lead-head .kicker { font-size: 14px; letter-spacing: .2em; text-transform: uppercase; border-bottom: 1px solid var(--line); display: inline-block; padding-bottom: 3px; margin-bottom: 10px; }
+    .lead-head h2 { font-family: var(--display); font-weight: 900; font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.02; }
+    .lead-head .deck { font-family: var(--display); font-style: italic; font-size: clamp(1.1rem, 2.4vw, 1.5rem); color: var(--ink-soft); margin-top: 10px; font-weight: 700; }
+
+    .byline { text-align: center; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 6px 0; margin: 16px 0; }
+
+    .lead-body { column-count: 3; column-gap: 26px; column-rule: 1px solid #bbb; text-align: justify; }
+    .lead-body p { margin-bottom: 10px; }
+    .lead-body p:first-of-type::first-letter { font-family: var(--display); font-weight: 900; font-size: 4.4rem; line-height: .8; float: left; padding: 4px 10px 0 0; }
+    .figure { break-inside: avoid; margin: 4px 0 12px; }
+    .figure img { width: 100%; filter: grayscale(1) contrast(1.08) brightness(.98); border: 1px solid var(--line); }
+    .figure figcaption { font-size: 13px; font-style: italic; color: var(--muted); text-align: center; padding-top: 4px; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+
+    .divider { border: none; border-top: 3px double var(--line); margin: 26px 0; }
+
+    .cols { column-count: 3; column-gap: 26px; column-rule: 1px solid #bbb; }
+    .story { break-inside: avoid; margin-bottom: 22px; }
+    .story h3 { font-family: var(--display); font-weight: 700; font-size: 1.5rem; line-height: 1.1; border-bottom: 2px solid var(--line); padding-bottom: 6px; margin-bottom: 8px; }
+    .story .sub { font-style: italic; color: var(--muted); font-size: 15px; margin-bottom: 6px; }
+    .story p { text-align: justify; margin-bottom: 8px; }
+    .story .tag { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); }
+
+    .box { border: 3px double var(--line); padding: 14px 18px; break-inside: avoid; margin-bottom: 22px; }
+    .box h4 { font-family: var(--display); font-weight: 900; text-align: center; text-transform: uppercase; font-size: 1.1rem; letter-spacing: .05em; border-bottom: 1px solid var(--line); padding-bottom: 6px; margin-bottom: 10px; }
+    .box ul { list-style: none; } .box li { border-bottom: 1px dotted #999; padding: 5px 0; font-size: 16px; }
+    .box li b { font-variant: small-caps; }
+
+    .classifieds { border-top: 3px double var(--line); border-bottom: 3px double var(--line); padding: 14px 0; margin-top: 10px; text-align: center; }
+    .classifieds h4 { font-family: var(--display); font-weight: 900; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; }
+    .classifieds .items { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 26px; font-size: 16px; }
+    .classifieds a { text-decoration: none; border-bottom: 1px solid var(--ink); }
+
+    .foot { text-align: center; font-size: 13px; color: var(--muted); margin-top: 22px; text-transform: uppercase; letter-spacing: .05em; }
+
+    @media (max-width: 820px) { .lead-body, .cols { column-count: 2; } }
+    @media (max-width: 560px) { .lead-body, .cols { column-count: 1; } .dateline { flex-direction: column; gap: 3px; } }
+  </style>
+</head>
+<body>
+  <div class="paper">
+    <div class="toprule">
+      <span>Vol. XXIII — Nº 2.026</span>
+      <a href="index.html">&larr; Trocar faixa etária</a>
+    </div>
+
+    <div class="masthead">
+      <h1>Gazeta Brimes</h1>
+      <div class="motto">"Toda a trajetória que é digna de nota" — Fundada em 2003</div>
+    </div>
+    <div class="dateline">
+      <span class="l">Rio de Janeiro, Brasil</span>
+      <span class="c">EDIÇÃO ESPECIAL &mdash; A VIDA DE UM LÍDER DE TECNOLOGIA</span>
+      <span class="r">Preço: 1 café</span>
+    </div>
+
+    <div class="lead-head">
+      <span class="kicker">Manchete Principal</span>
+      <h2>Do PHP à Inteligência Artificial: os 20 anos de Bruno de Lima</h2>
+      <div class="deck">Carioca que começou programando ainda adolescente hoje lidera a transformação com IA na Gruppy</div>
+    </div>
+
+    <div class="byline">Por nossa redação &bull; Reportagem especial &bull; Caderno de Tecnologia</div>
+
+    <div class="lead-body">
+      <figure class="figure">
+        <img src="assets/bruno.jpg" alt="Bruno de Lima" />
+        <figcaption>Bruno de Lima, Head of AI Transformation, em retrato recente.</figcaption>
+      </figure>
+      <p>Poucos profissionais atravessam duas décadas de tecnologia mantendo os pés no código e a cabeça na estratégia. Bruno de Lima é um deles. Hoje à frente da transformação com Inteligência Artificial na Gruppy, ele construiu uma carreira que começou muito antes dos títulos.</p>
+      <p>Reconhecido por inspirar times e conectar negócio e tecnologia, o executivo tem como marca a comunicação clara e a escuta ativa — atributos que, segundo colegas, explicam sua capacidade de liderar equipes multidisciplinares com autonomia.</p>
+      <p>Nos últimos anos, dedicou-se a colocar a IA Generativa a serviço da produtividade, identificando aplicações práticas que geram valor tanto nos processos internos quanto nas entregas aos clientes. "O foco é resultado real, não modismo", resume a filosofia que o acompanha.</p>
+      <p>Das locadoras de fita de vídeo aos clusters de Kubernetes, sua história se confunde com a própria evolução da tecnologia no país — e ainda está longe de terminar.</p>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="cols">
+      <div class="story">
+        <span class="tag">Negócios</span>
+        <h3>Case com o Google marca era de arquitetura</h3>
+        <div class="sub">À frente de seis arquitetos, executivo moderniza legado</div>
+        <p>Como Gerente de Arquitetura na Funcional Health Tech, Bruno criou e liderou o time responsável por um novo serviço para a rede de farmácias Panvel — feito que rendeu um case junto ao Google Cloud.</p>
+        <p>No período, conduziu ainda a certificação SOC 2 e o projeto de LGPD, além da migração dos serviços de trade para a nuvem, tornando-os stateless para operar em Kubernetes.</p>
+      </div>
+
+      <div class="story">
+        <span class="tag">Gestão</span>
+        <h3>Fusão histórica: Fidelize se une à Funcional</h3>
+        <div class="sub">Dois universos tecnológicos, um só time de 30 pessoas</div>
+        <p>Como Gerente de Desenvolvimento, comandou a incorporação de 100% da Fidelize à Funcional, unindo culturas distintas — uma de raiz open-source, outra Microsoft.</p>
+        <p>Sob sua batuta, o time de quase 30 profissionais migrou para o modelo 100% remoto sem perder engajamento, num feito celebrado internamente.</p>
+      </div>
+
+      <div class="story">
+        <span class="tag">Inovação</span>
+        <h3>Chegada da Sanofi multiplica processamento por seis</h3>
+        <div class="sub">Gerente de Inovação aposta em QA e microsserviços</div>
+        <p>A entrada do gigante farmacêutico Sanofi exigiu uma mudança de paradigma: o processamento de dados foi ampliado em mais de seis vezes, com pesadas customizações.</p>
+        <p>Foi também quando nasceu o time de QA e deram-se os primeiros passos na jornada de microsserviços, com Laravel.</p>
+      </div>
+
+      <div class="box">
+        <h4>Começou cedo</h4>
+        <ul>
+          <li><b>Aos 14:</b> criou seu 1º sistema — controle de locadora de fitas — enquanto trabalhava numa.</li>
+          <li><b>Aos 16:</b> já dava aula de informática em curso preparatório.</li>
+          <li><b>Aos 17:</b> vendeu doce de pote na rua, aprendendo o valor do trabalho.</li>
+        </ul>
+      </div>
+
+      <div class="story">
+        <span class="tag">Empreendedorismo</span>
+        <h3>Nas horas vagas, uma fábrica de projetos</h3>
+        <div class="sub">Do SaaS Mali aos agentes de IA no WhatsApp</div>
+        <p>Fora do expediente, Bruno mantém projetos próprios: o <b>Mali</b>, plataforma de gestão para salões e clínicas; um ecossistema de <b>bots de IA</b> para agendamento e finanças; e ferramentas de infraestrutura.</p>
+        <p>Tudo publicado sob a marca pessoal <b>brimes</b>, seu laboratório particular de ideias.</p>
+      </div>
+
+      <div class="box">
+        <h4>Formação</h4>
+        <ul>
+          <li><b>UERJ</b> — Gestão de Projetos de TI (2013–2014).</li>
+          <li><b>Unigranrio</b> — Bacharel em Sistemas de Informação (2004–2009).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="classifieds">
+      <h4>Classificados &mdash; Fale com o entrevistado</h4>
+      <div class="items">
+        <span>✉ <a href="mailto:brunodelima@gmail.com">brunodelima@gmail.com</a></span>
+        <span>in <a href="https://www.linkedin.com/in/blimaso" target="_blank" rel="noopener">linkedin.com/in/blimaso</a></span>
+        <span>&#8862; <a href="https://github.com/brimes" target="_blank" rel="noopener">github.com/brimes</a></span>
+      </div>
+    </div>
+
+    <div class="foot">Gazeta Brimes &copy; 2026 &bull; Todos os fatos são reais &bull; brimes.net</div>
+  </div>
+</body>
+</html>

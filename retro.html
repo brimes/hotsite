@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>★ Home Page do Bruno de Lima ★</title>
+  <meta name="description" content="A home page do Bruno de Lima — Head of AI Transformation. Estilo retrô anos 80/90." />
+  <meta name="theme-color" content="#0d0221" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230d0221'/><text x='50' y='72' font-size='56' text-anchor='middle'>📼</text></svg>" />
+  <style>
+    :root {
+      --bg: #0d0221; --bg2: #190636; --neon-pink: #ff2fb9; --neon-cyan: #05d9e8; --neon-purple: #b967ff;
+      --neon-yellow: #f9f871; --grid: rgba(255,47,185,.4); --panel: #1b0a3d; --panel-b: #ff2fb9;
+      --mono: 'VT323', 'Courier New', monospace; --pixel: 'Press Start 2P', system-ui;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--mono); background: var(--bg); color: #eafcff; overflow-x: hidden;
+      font-size: 20px; line-height: 1.35; min-height: 100vh;
+    }
+    a { color: var(--neon-cyan); }
+    .wrap { width: 100%; max-width: 900px; margin: 0 auto; padding: 0 16px; position: relative; z-index: 2; }
+
+    /* synthwave grid + sun */
+    .scene { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+      background: linear-gradient(180deg, #0d0221 0%, #2a0a52 55%, #55106e 72%, #0d0221 100%); }
+    .sun { position: absolute; left: 50%; top: 42%; transform: translate(-50%,-50%); width: 300px; height: 300px; border-radius: 50%;
+      background: linear-gradient(180deg, var(--neon-yellow), var(--neon-pink)); filter: blur(2px); box-shadow: 0 0 90px rgba(255,47,185,.6); }
+    .sun::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; top: 52%; background: repeating-linear-gradient(180deg, transparent 0 8px, #2a0a52 8px 16px); }
+    .grid { position: absolute; left: -50%; right: -50%; bottom: -10%; height: 55%;
+      background-image: linear-gradient(var(--grid) 2px, transparent 2px), linear-gradient(90deg, var(--grid) 2px, transparent 2px);
+      background-size: 44px 44px; transform: perspective(320px) rotateX(64deg); transform-origin: bottom; opacity: .8; }
+    .stars { position: absolute; inset: 0 0 55% 0;
+      background-image: radial-gradient(1px 1px at 20% 30%, #fff, transparent), radial-gradient(1px 1px at 70% 20%, #fff, transparent),
+        radial-gradient(1px 1px at 40% 60%, #fff, transparent), radial-gradient(2px 2px at 85% 45%, #fff, transparent),
+        radial-gradient(1px 1px at 55% 15%, #fff, transparent), radial-gradient(1px 1px at 10% 70%, #fff, transparent); }
+
+    .marquee { background: #000; border-top: 3px solid var(--neon-pink); border-bottom: 3px solid var(--neon-pink);
+      color: var(--neon-yellow); font-size: 22px; letter-spacing: 1px; white-space: nowrap; overflow: hidden; position: relative; z-index: 3; }
+    .marquee span { display: inline-block; padding: 6px 0; animation: scroll 22s linear infinite; }
+    @keyframes scroll { from { transform: translateX(100%); } to { transform: translateX(-100%); } }
+
+    .topbar { text-align: center; padding: 14px 0 6px; position: relative; z-index: 3; }
+    .topbar .back { font-family: var(--mono); font-size: 20px; color: var(--neon-cyan); border: 2px solid var(--neon-cyan);
+      padding: 3px 12px; text-decoration: none; background: #000; }
+    .blink { animation: blink 1s steps(1) infinite; } @keyframes blink { 50% { opacity: 0; } }
+
+    h1.title { font-family: var(--pixel); font-size: clamp(15px, 3.4vw, 30px); line-height: 1.5; text-align: center; margin: 18px 0 6px;
+      color: #fff; text-shadow: 3px 3px 0 var(--neon-pink), -2px -2px 0 var(--neon-cyan); }
+    .subtitle { text-align: center; font-size: 26px; color: var(--neon-cyan); margin-bottom: 8px; }
+    .subtitle b { color: var(--neon-yellow); }
+
+    .hero-card { display: flex; gap: 22px; align-items: center; background: var(--panel); border: 4px ridge var(--neon-pink);
+      padding: 18px; margin: 18px 0; box-shadow: 0 0 24px rgba(255,47,185,.35); }
+    .hero-card img { width: 180px; height: 220px; object-fit: cover; border: 5px ridge var(--neon-cyan); flex: none; image-rendering: auto; }
+    .hero-card .info { font-size: 22px; }
+    .hero-card .info h2 { font-family: var(--pixel); font-size: 13px; color: var(--neon-yellow); margin-bottom: 12px; line-height: 1.6; }
+    .hero-card .info p { margin-bottom: 6px; }
+    .hero-card .info .star { color: var(--neon-yellow); }
+
+    .counter { text-align: center; margin: 6px 0 16px; font-size: 22px; color: #c9b8ff; }
+    .counter .odo { font-family: var(--mono); background: #000; color: #33ff66; border: 2px solid #33ff66; padding: 2px 8px; letter-spacing: 3px; }
+
+    .panel { background: var(--panel); border: 3px solid var(--neon-purple); margin: 22px 0; box-shadow: 0 0 18px rgba(185,103,255,.25); }
+    .panel > h3 { font-family: var(--pixel); font-size: 13px; background: linear-gradient(90deg, var(--neon-purple), var(--neon-pink));
+      color: #fff; padding: 10px 14px; letter-spacing: 1px; }
+    .panel .pbody { padding: 14px 18px; font-size: 21px; }
+    .panel .pbody p { margin-bottom: 10px; }
+    .hl-pink { color: var(--neon-pink); font-weight: bold; } .hl-cyan { color: var(--neon-cyan); } .hl-yellow { color: var(--neon-yellow); }
+
+    ul.retro { list-style: none; }
+    ul.retro li { padding: 7px 0 7px 30px; position: relative; border-bottom: 1px dashed rgba(255,47,185,.3); }
+    ul.retro li::before { content: "►"; position: absolute; left: 4px; color: var(--neon-cyan); }
+    ul.retro li b { color: var(--neon-yellow); } ul.retro li .yr { color: var(--neon-pink); }
+
+    .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .proj-box { border: 2px dashed var(--neon-cyan); padding: 12px; background: #12063099; }
+    .proj-box h4 { font-family: var(--pixel); font-size: 11px; color: var(--neon-pink); margin-bottom: 8px; line-height: 1.5; }
+    .proj-box p { font-size: 20px; }
+
+    .contact-btns { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 6px 0; }
+    .btn98 { font-family: var(--mono); font-size: 22px; text-decoration: none; color: #000; background: linear-gradient(180deg,#f0f0f0,#c0c0c0);
+      border: 3px outset #fff; padding: 6px 18px; }
+    .btn98:active { border-style: inset; }
+
+    .footer { text-align: center; padding: 26px 0 44px; font-size: 20px; color: #b9a7e6; position: relative; z-index: 2; }
+    .footer .ring { margin-bottom: 8px; color: var(--neon-cyan); }
+    .footer .best { color: var(--neon-yellow); }
+
+    @media (max-width: 620px) {
+      .hero-card { flex-direction: column; text-align: center; }
+      .projects { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { .marquee span { animation: none; } .blink { animation: none; } }
+  </style>
+</head>
+<body>
+  <div class="scene"><div class="stars"></div><div class="sun"></div><div class="grid"></div></div>
+
+  <div class="marquee"><span>★ ★ ★ BEM-VINDO À HOME PAGE DO BRUNO DE LIMA ★ HEAD OF AI TRANSFORMATION ★ 20+ ANOS DE TECNOLOGIA ★ BEST VIEWED IN NETSCAPE NAVIGATOR 800x600 ★ ★ ★</span></div>
+
+  <div class="topbar"><a class="back" href="index.html">&lt;&lt; TROCAR FAIXA ETÁRIA</a> <span class="blink" style="color:var(--neon-yellow)">NEW!</span></div>
+
+  <div class="wrap">
+    <h1 class="title">Home Page do<br>Bruno de Lima</h1>
+    <div class="subtitle">~ <b>Head of AI Transformation</b> @ Gruppy ~</div>
+
+    <div class="counter">Você é o visitante nº <span class="odo">0042789</span> desde 1999 :-)</div>
+
+    <div class="hero-card">
+      <img src="assets/bruno.jpg" alt="Bruno de Lima" />
+      <div class="info">
+        <h2>&gt; SOBRE MIM</h2>
+        <p><span class="star">★</span> Profissional sênior com <span class="hl-pink">+20 anos</span> transformando negócios com tecnologia.</p>
+        <p><span class="star">★</span> Da programação em PHP à liderança de <span class="hl-cyan">arquitetura</span> e times.</p>
+        <p><span class="star">★</span> Hoje mergulhado em <span class="hl-yellow">IA Generativa</span> aplicada ao dia a dia.</p>
+        <p><span class="star">★</span> Rio de Janeiro, Brasil.</p>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>&gt;&gt; MINHA CARREIRA.EXE</h3>
+      <div class="pbody">
+        <ul class="retro">
+          <li><span class="yr">[2025→hoje]</span> <b>Gruppy</b> — Head of AI Transformation. Estratégia de produtividade com IA generativa.</li>
+          <li><span class="yr">[2024-2025]</span> <b>Raízen</b> — Coordenador Digital &amp; Arquiteto de Soluções. Líder de delivery.</li>
+          <li><span class="yr">[2021-2024]</span> <b>Funcional Health Tech</b> — Gerente de Arquitetura. Case com o Google (Panvel), SOC 2 / LGPD, migração p/ Cloud K8s.</li>
+          <li><span class="yr">[2018-2020]</span> <b>Funcional Health Tech</b> — Gerente de Desenvolvimento. Time de ~30 pessoas, incorporação da Fidelize.</li>
+          <li><span class="yr">[2014-2018]</span> <b>Fidelize</b> — Gerente de Inovação. Entrada da Sanofi (6× processamento), criação do QA, microsserviços.</li>
+          <li><span class="yr">[2003-2014]</span> <b>Início</b> — de Programador Jr a Coordenador. PHP/Yii, 1º app híbrido (PhoneGap), migração AWS.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel" style="border-color:var(--neon-cyan);">
+      <h3 style="background:linear-gradient(90deg,var(--neon-cyan),var(--neon-purple));">&gt;&gt; MEUS PROJETOS.DIR</h3>
+      <div class="pbody">
+        <div class="projects">
+          <div class="proj-box"><h4>MALI</h4><p>SaaS de gestão p/ salões (Next.js) e clínicas (Rails). Multi-tenant, PWA, em produção.</p></div>
+          <div class="proj-box"><h4>BOTS DE IA</h4><p>Agentes no WhatsApp: agendamento médico e finanças pessoais. FastAPI + LangGraph.</p></div>
+          <div class="proj-box"><h4>WEDDING SITE</h4><p>Site de casamento com galeria e RSVP. Firebase + Google Apps Script.</p></div>
+          <div class="proj-box"><h4>INFRA &amp; TOOLS</h4><p>Imagem Docker c/ Playwright e deploy em VM AWS com Nginx.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" style="border-color:var(--neon-yellow);">
+      <h3 style="background:linear-gradient(90deg,var(--neon-yellow),var(--neon-pink));color:#000;">&gt;&gt; FALE COMIGO</h3>
+      <div class="pbody" style="text-align:center;">
+        <p>Manda um e-mail ou me acha nas redes! :-)</p>
+        <div class="contact-btns">
+          <a class="btn98" href="mailto:brunodelima@gmail.com">✉ E-MAIL</a>
+          <a class="btn98" href="https://www.linkedin.com/in/blimaso" target="_blank" rel="noopener">in LINKEDIN</a>
+          <a class="btn98" href="https://github.com/brimes" target="_blank" rel="noopener">&#8862; GITHUB</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="ring">🚧 [ SITE EM CONSTRUÇÃO ] 🚧 &nbsp;·&nbsp; ◄ webring ► &nbsp;·&nbsp; 📧 assine meu livro de visitas</div>
+    <div class="best">Best viewed at 800×600 · © 1999–2026 Bruno de Lima · brimes.net</div>
+  </div>
+</body>
+</html>
