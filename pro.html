@@ -245,6 +245,8 @@
     .proj p { color: var(--text-dim); font-size: .97rem; margin-bottom: 18px; position: relative; }
     .stack { display: flex; flex-wrap: wrap; gap: 7px; position: relative; }
     .stack span { font-size: 12px; color: var(--text-faint); border: 1px solid var(--border); padding: 4px 10px; border-radius: 7px; font-weight: 500; }
+    .proj-link { position: relative; display: inline-flex; align-items: center; margin-top: 18px; font-size: 14px; font-weight: 600; color: var(--accent); border-bottom: 1px solid transparent; transition: border-color .2s, gap .2s; }
+    .proj-link:hover { border-color: var(--accent); }
 
     /* ---------- Contact ---------- */
     .contact { text-align: center; }
@@ -498,11 +500,12 @@
               <div class="proj-icon">💇</div>
               <span class="proj-tag tag-prod" data-i18n="proj.mali.tag">Em produção</span>
             </div>
-            <h3>Mali — SaaS de Gestão</h3>
-            <p data-i18n="proj.mali.desc">Ecossistema de gestão multi-tenant com duas verticais: <b>Mali-S</b> para salões de beleza (agenda, clientes, comissões, caixa) e <b>Mali-D</b> para clínicas e consultórios médicos. PWA com push, deploy em Kubernetes.</p>
+            <h3>Mali-S — SaaS de Gestão</h3>
+            <p data-i18n="proj.mali.desc">Plataforma de gestão multi-tenant para <b>salões de beleza</b>: agenda de horários, clientes, funcionários, comissões e fluxo de caixa. PWA com notificações push e deploy em Kubernetes.</p>
             <div class="stack">
-              <span>Next.js 14</span><span>TypeScript</span><span>Prisma</span><span>Ruby on Rails 8</span><span>PostgreSQL</span><span>Kubernetes</span>
+              <span>Next.js 14</span><span>TypeScript</span><span>Prisma</span><span>PostgreSQL</span><span>Kubernetes</span><span>PWA</span>
             </div>
+            <a class="proj-link" href="https://www.mali-s.com" target="_blank" rel="noopener">www.mali-s.com ↗</a>
           </article>
 
           <!-- Bots IA -->
@@ -524,11 +527,12 @@
               <div class="proj-icon">💍</div>
               <span class="proj-tag tag-done" data-i18n="proj.wed.tag">Concluído</span>
             </div>
-            <h3 data-i18n="proj.wed.title">Site de Casamento</h3>
-            <p data-i18n="proj.wed.desc">Site do casamento com RSVP, galeria e informações do evento. Integração criativa com <b>Google Apps Script</b> para coletar as fotos dos convidados direto no Google Drive/Photos.</p>
+            <h3 data-i18n="proj.wed.title">Convite de Casamento</h3>
+            <p data-i18n="proj.wed.desc">Meu próprio convite de casamento, que desenvolvi do zero: lista de presença (RSVP), informações do evento e detalhes para os convidados. Depois da festa, virou um <b>álbum de fotos</b> do casamento.</p>
             <div class="stack">
-              <span>Next.js 15</span><span>React 19</span><span>Firebase</span><span>Google Apps Script</span><span>Tailwind</span>
+              <span>Next.js</span><span>React</span><span>Firebase</span><span>Google Apps Script</span>
             </div>
+            <a class="proj-link" href="https://bruna-bruno-11-out.web.app/" target="_blank" rel="noopener"><span data-i18n="proj.wed.link">Ver o álbum de fotos</span> ↗</a>
           </article>
 
           <!-- Infra -->
@@ -623,11 +627,12 @@
         "proj.kicker": "Portfolio", "proj.title": "Personal projects",
         "proj.sub": "Products and experiments I build on my own — from production SaaS to AI agents and infrastructure tooling.",
         "proj.mali.tag": "In production",
-        "proj.mali.desc": "A multi-tenant management ecosystem with two verticals: <b>Mali-S</b> for beauty salons (scheduling, clients, commissions, cash flow) and <b>Mali-D</b> for medical clinics and practices. PWA with push, deployed on Kubernetes.",
+        "proj.mali.desc": "A multi-tenant management platform for <b>beauty salons</b>: scheduling, clients, staff, commissions and cash flow. PWA with push notifications, deployed on Kubernetes.",
         "proj.bots.tag": "Active", "proj.bots.title": "AI Agents Ecosystem",
         "proj.bots.desc": "A set of conversational agents over WhatsApp: a <b>medical scheduling bot</b> (iClinic integration) and a <b>personal finance agent</b> that categorizes spending with AI and updates spreadsheets in real time. A multi-instance gateway acts as the bridge.",
-        "proj.wed.tag": "Completed", "proj.wed.title": "Wedding Website",
-        "proj.wed.desc": "A wedding site with RSVP, gallery and event info. Creative <b>Google Apps Script</b> integration to collect guests' photos straight into Google Drive/Photos.",
+        "proj.wed.tag": "Completed", "proj.wed.title": "Wedding Invitation",
+        "proj.wed.desc": "My own wedding invitation, built from scratch: RSVP guest list, event info and details for guests. After the party, it became a <b>photo album</b> of the wedding.",
+        "proj.wed.link": "See the photo album",
         "proj.infra.tag": "Infrastructure", "proj.infra.title": "Infra & Tooling",
         "proj.infra.desc": "The backbone that supports the ecosystem: a <b>Docker image</b> with Python + Playwright + Chromium published to GHCR, and AWS VM deploy orchestration with Docker Compose and Nginx (reverse proxy + SSL).",
         "contact.title": "Let's talk",
